@@ -1,0 +1,13 @@
+var li = $("#EditZone ul.records li.item-<%= raw @record.id %>");
+var old_li = "item-<%= raw @record.id %>";
+var new_li = "item-<%= raw @new_record.id %>";
+
+<% if @new_record.errors.any? %>
+	var errors = <%= raw @new_record.errors.to_json %>;	
+	
+	markRecordErrors(li, errors);	
+<% else %>
+	var records = "<%= escape_javascript(render :partial => 'zone_files/records', :locals => {:is_new => false}) %>";
+	
+	loadRecords(records, old_li, new_li);
+<% end %>

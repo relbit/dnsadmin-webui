@@ -1,0 +1,6 @@
+<% @zonefile.records.each do |record| %>
+    <li class="f-record commit-element <%= "dirty" if record.dirty? %> <%= ("item-#{record.id}") if !is_new %>">
+      <% if !is_new %><div class="dd-handle ui-icon ui-icon-grip-dotted-vertical"></div><% end %>
+      <%= render :partial => 'zone_files/record_form', :locals => {:is_new => is_new, :record => record} %>
+    </li>
+<% end %>

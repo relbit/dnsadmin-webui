@@ -1,0 +1,814 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Tahoma, Arial;
+	font-size: 11px;
+}
+
+/*
+#Header {
+	background-image: url('logo.jpg');
+	background-repeat: no-repeat;
+	height: 47px;
+	padding-left: 220px;
+	padding-top: 6px;
+}
+
+#Header h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 3.0em;
+	float: left;
+}
+
+#Header h2 {
+	padding: 0;
+	margin: 8px 0 0 40px;
+	font-size: 2.0em;
+	float: left;
+}
+
+*/
+
+#Navigation .menu {
+	background-image: url('logo.png');
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-color: #333333 !important;
+}
+
+#Navigation .menu > ul {
+	background-color: transparent !important;
+}
+
+#Content {
+	clear: both;
+}
+
+#Content h1 {
+	font-size: 2.2em;
+	padding: 10px;
+	padding-left: 20px;
+	color: #404040;
+	text-shadow: silver 1px 1px 1px;
+	margin: 10px;
+	float: left;
+}
+
+#Content .notice {
+	clear: both;
+	padding: 10px;
+	border: 1px solid gray;
+	text-align: center;
+	font-size: 1.2em;
+	font-weigth: bold;
+	margin: 10px 10px 10px 10px;
+	border-radius : 0.4em;
+    -moz-border-radius : 0.4em;
+    -webkit-border-radius : 0.4em;
+}
+
+#Content .notice.info {
+	border: 1px solid green;
+	background-color: #ddffdd;
+}
+
+#Content .notice.error {
+	border: 1px solid red;
+	background-color: #ffdddd;
+}
+
+#Content table td.origin {
+	width: 20%;
+	text-shadow: silver 1px 1px 1px;
+	font-weigth: 500;
+	font-family: monospace;
+}
+
+#Content table td.zone-label span {
+	background-color: #0190cc;
+	color: white;
+	font-size: 1.15em;
+	font-weight: bold;
+	padding: 1px 4px 1px 4px;
+	border-radius : 0.4em;
+    -moz-border-radius : 0.4em;
+    -webkit-border-radius : 0.4em;
+    font-family: monospace;
+}
+
+#Content table td.ui-action a span.ui-button-text {
+	padding: 1px 1em 1px 2.1em;
+}
+
+#NewZone, #NewAdmin, #NewUser {
+	display: block;
+	float: left;
+	margin-left: 20px;
+	clear: both;
+	
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-left-radius: 0;
+	-khtml-border-bottom-left-radius: 0;
+	border-bottom-left-radius: 0; 
+	
+	-moz-border-radius-bottomright: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-khtml-border-bottom-right-radius: 0;
+	border-bottom-right-radius: 0; 
+}
+
+#EditZone {
+	clear: both;
+	padding: 10px;
+	margin: 10px;
+	border: 1px dotted silver;
+	background-color: #eeeeee;
+}
+
+#EditBack {
+	float: left;
+	margin: 22px 0 0 10px;
+}
+
+#EditZone input, #EditAdmin input, #EditUser, #EditCommit {
+	font-family: monospace;
+}
+
+#EditZone input[type="text"].grayed {
+	background-color: #eeeeee !important;
+}
+
+#EditZone div.f-settings {
+	margin: 30px 6px 20px 6px;
+	padding: 10px;
+	font-size: 1.2em;
+	background-color: #ffffff;
+	border: 1px solid silver;
+}
+
+#EditZone div.f-settings input.slaves {
+	border: 1px solid silver;
+	float: left;
+	display: block;
+	width: 540px;
+}
+
+#EditZone div.f-settings label.slaves {
+	float: left;
+	display: block;
+	margin-top: 3px;
+}
+
+#EditZone div.f-settings label.dns-admins {
+	margin-top: 3px;
+    float: left;
+	display: block;
+}
+
+#EditZone div.f-settings ul {
+	float: left;
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+#EditZone div.f-settings ul li {
+	float: left;
+}
+
+#EditZone div.f-settings #RecordAdmins {
+	width: 540px;
+	border: 1px solid silver;
+}
+
+#EditZone div.f-settings .f-settings-row {
+	margin-bottom: 20px;
+}
+
+#EditZone div.f-settings .f-settings-row label {
+	width: 350px;
+	display: block;
+	float: left;
+	margin-top: 3px;
+}
+
+#EditZone div.field.inline input {
+	font-size: 1.2em;
+	border: 0;
+	border-bottom: 1px dashed gray;
+	background-color: #ffffff;
+}
+
+#EditZone div.field_with_errors {
+	float: left;
+}
+
+#EditZone div.field_with_errors input[type="text"] {
+	border: 1px solid red !important;
+	background-color: #ffdddd;
+}
+
+#EditZone div.field_with_errors label {
+	display: block;
+	float: left;
+	margin-top: 2px;
+}
+
+#EditZone div.field.inline label {
+	font-size: 1.2em;
+	color: gray;
+}
+
+#EditZone div.f-label {
+	margin-top: 20px;
+}
+
+#EditZone div.f-label label {
+	font-weight: bold;
+}
+
+#EditZone div.f-origin {
+	margin-top: 20px;
+}
+
+#EditZone div.f-ttl {
+	clear: both;
+}
+
+#EditZone div.f-label label,
+#EditZone div.f-origin label,
+#EditZone div.f-ttl label {
+	width: 90px;
+	display: block;
+	float: left;
+	margin-top: 3px;
+}
+
+#EditZone div.f-soa, #EditZone div.f-soa-data.first {
+	margin-top: 30px;
+	clear: both;
+}
+
+#EditZone div.f-soa div.soa-text {
+	margin: 4px 20px 0 20px;
+}
+
+#EditZone div.f-soa label, #EditZone div.f-soa input {
+	display: block;
+	float: left;
+	margin-top: 2px;
+	margin-left: 10px;
+}
+
+
+
+#EditZone div.f-soa-data label {
+	width: 120px;
+	display: block;
+	float: left;
+	margin-left: 228px;
+	margin-top: 3px;
+}
+
+#EditZone .records {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 0px;
+}
+
+#EditZone .records li {
+	margin-bottom: 4px;
+	background-color: #eeeeee;
+}
+
+#EditZone .records li.ui-state-highlight {
+	border: 1px solid black !important;
+}
+
+#EditZone .records li.ui-sortable-helper {
+	border: 1px solid gray;
+}
+
+#EditZone .records li div.dd-handle {
+	float: left;
+	margin-top: 7px;
+	cursor: move;
+	width: 16px;
+	height: 16px;
+}
+
+#EditZone .records .info {
+	font-size: 1.2em;
+	float: left;
+}
+
+#AddRecord {
+	float: left;
+	margin-left: 10px;
+	margin-top: 8px;
+}
+
+#EditZone .f-record {
+	clear: both;
+	border-left: 10px solid transparent;
+}
+
+#EditZone .f-record.dirty, #EditZone form.zone-file.dirty {
+	border: 0;
+	border-left: 10px solid orange !important;
+}
+
+#EditZone form.zone-file.dirty {
+	padding-left:10px;
+}
+
+#EditZone .records-header {
+    clear: both;
+    margin-top: 20px;  
+    padding-left: 30px;
+}
+
+#EditZone .records-header p {
+    float: left;
+    border: 1px solid silver;
+    padding: 4px 10px 4px 10px;
+    text-align: center;
+    color: white;
+    background-color: gray;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+#EditZone .records-header .r-h-name {
+    width: 230px;
+}
+
+#EditZone .records-header .r-h-ttl {
+    width: 20px;
+    margin-left: 20px;
+}
+
+#EditZone .records-header .r-h-rtype {
+    width: 50px;
+    margin-left: 20px;
+}
+
+#EditZone .records-header .r-h-data {
+    width: 280px;
+    margin-left: 20px;
+
+}
+
+
+#EditZone .f-record .field {
+	float: left;
+	margin-left: 20px;
+	margin-top: 4px;
+}
+
+#EditZone .f-record .field.f-r-name {
+	margin-left: 4px;
+}
+
+#EditZone .f-record .field.f-r-name input {
+	width: 250px; 
+}
+
+#EditZone .f-record .f-r-ttl input {
+	width: 40px;
+	border: 1px solid silver;
+}
+
+#EditZone .f-record .f-r-name input {
+	border: 1px solid silver;
+}
+
+#EditZone .f-record .f-r-rtype select {
+	border: 1px solid silver;
+}
+
+#EditZone .f-record .f-r-data input {
+	border: 1px solid silver;
+	width: 300px;
+}
+
+#EditZone .save-all-records {
+	margin-top: 10px;
+}
+
+#EditZone .commit {
+	margin-left: 20px;
+}
+
+#EditZone .f-record .loading-bar {
+	margin-top: 8px;
+	margin-left: 10px;
+	display: none;
+}
+
+#EditZone .f-record .save-record {
+	float: left;
+	margin-left: 10px;
+}
+
+#EditZone .f-record .delete-record {
+	float: left;
+	margin-top: 2px;
+	margin-left: 6px;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: 22px;
+	width: 29px;
+}
+
+#EditZone .f-record .last-changes {
+	float: left;
+	margin: 6px 0 0 10px;
+	font-family: monospace;
+	font-size: 1.1em;
+}
+
+#EditZone .f-record .last-changes a:link, 
+#EditZone .f-record .last-changes a:visited, 
+#EditZone .f-record .last-changes a:active {
+	color: #3383BB;
+	text-decoration: none;
+}
+
+#EditZone .f-record .last-changes a:hover {
+	text-decoration: underline;
+}
+
+#EditZone input.incorrect, #EditZone select.incorrect {
+	border: 1px solid red !important;
+	background-color: #ffdddd;
+}
+
+#EditZone .ui-autocomplete-loading {
+	background: white url('loading.gif') right center no-repeat;
+}
+
+#EditAdmin {
+	clear: both;
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #0190cc;
+}
+
+#EditAdmin .field_with_errors {
+	float: left;
+}
+
+#EditAdmin .field_with_errors input[type="text"] {
+	border: 1px solid red !important;
+	background-color: #ffdddd;
+}
+
+#EditAdmin .field label, #EditAdmin .field input {
+	display: block;
+	float: left;
+}
+
+#EditAdmin .field label {
+	margin-top: 5px;
+	width: 120px;
+	text-align: right;
+}
+
+#EditAdmin .field input {
+	border: 1px solid silver;
+	margin-left: 10px;
+}
+
+#EditAdmin .field {
+	clear: both;
+	margin-top: 10px;
+}
+
+#EditAdmin .actions {
+	clear: both;
+	margin-top: 30px;
+}
+
+#EditUser {
+	clear: both;
+	margin: 10px;
+	padding: 10px;
+	border: 1px solid #0190cc;
+}
+
+#EditUser .field_with_errors {
+	float: left;
+}
+
+#EditUser .field_with_errors input[type="text"] {
+	border: 1px solid red !important;
+	background-color: #ffdddd;
+}
+
+#EditUser .field label, #EditUser .field input, #EditUser .field select {
+	display: block;
+	float: left;
+}
+
+#EditUser .field label {
+	margin-top: 5px;
+	width: 120px;
+	text-align: right;
+}
+
+#EditUser .field input, #EditUser .field select {
+	border: 1px solid silver;
+	margin-left: 10px;
+}
+
+#EditUser .field {
+	clear: both;
+	margin-top: 10px;
+}
+
+#EditUser .field .errors {
+	display: block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 3px;
+	font-style: italic;
+}
+
+#EditUser .actions {
+	clear: both;
+	margin-top: 30px;
+}
+
+#EditCommit {
+	clear: both;
+	padding: 10px;
+	margin: 10px;
+	border: 1px dotted silver;
+	background-color: #eeeeee;
+}
+
+#EditCommit .field_with_errors {
+	float: left;
+}
+
+#EditCommit .field_with_errors input[type="text"] {
+	border: 1px solid red !important;
+	background-color: #ffdddd;
+}
+
+#EditCommit .field label, #EditCommit .field input, #EditCommit .field select {
+	display: block;
+	float: left;
+}
+
+#EditCommit .field label {
+	margin-top: 5px;
+	width: 120px;
+	text-align: right;
+}
+
+#EditCommit .field input, #EditCommit .field select {
+	border: 1px solid silver;
+	margin-left: 10px;
+}
+
+#EditCommit .field {
+	clear: both;
+	margin-top: 10px;
+}
+
+#EditCommit .field .errors {
+	display: block;
+	float: left;
+	margin-left: 10px;
+	margin-top: 3px;
+	font-style: italic;
+}
+
+#EditCommit .actions {
+	clear: both;
+	margin-top: 30px;
+}
+
+#CommitResult, #CommitAction {
+	padding: 10px;
+}
+
+#CommitResult p, #CommitAction p {
+	padding-left: 10px;
+	font-size: 1.2em;
+}
+
+#CommitChanges {
+	padding: 10px;
+}
+
+#CommitChanges ul.soa {
+    list-style-type: square;
+    font-size: 1.2em;  
+}
+
+#CommitChanges ul.soa li {
+    clear: both;
+    display: block;
+    padding: 4px 10px 4px 10px;
+    border-bottom: 1px solid silver;
+}
+
+#CommitChanges ul.soa li img {
+    display: block;
+	float: left;
+}
+
+#CommitChanges ul.soa li span.label {
+    display: block;
+    float: left;
+    width: 160px;
+    text-align: right;
+    margin-right: 16px;
+    font-style: italic;
+    color: #444444;
+}
+
+#CommitChanges ul.soa li span.data {
+    display: block;
+    float: left;
+    width: 200px;
+}
+
+#CommitChanges ul.soa li span.user {
+    display: block;
+    float: left;
+    width: 200px;
+    font-style: italic;
+    color: #444444;
+}
+
+#CommitChanges table.records {
+
+}
+
+#CommitChanges table.records tr.added {
+    background-color: #DDFFDD;
+}
+
+#CommitChanges table.records tr.modified {
+	background-color: white;
+}
+
+#CommitChanges table.records tr.deleted {
+    background-color: #FFDDDD;
+}
+
+#LastChanges {
+	padding: 10px;
+	margin-bottom: 10px;
+	font-size: 1.2em;
+	font-family: monospace;
+}
+
+#LastChanges a:link, #LastChanges a:visited, #LastChanges a:active {
+	color: #3383BB;
+	text-decoration: none;
+}
+
+#LastChanges a:hover {
+	text-decoration: underline;
+}
+
+#Footer {
+	width: 100%;
+	text-align: center;
+	margin-top: 20px;
+	clear: both;
+	color: grey;
+	border: 0;
+	padding-top: 10px;
+	border-top: 1px solid #DEDEDE;
+}
+
+.loading-bar {
+    width: 16px;
+    height: 16px;
+    background-image: url('loading.gif');
+    background-repeat: no-repeat;
+}
+
+.ui-list {
+	border: 1px solid #0190cc;
+	width: 100%;
+}
+
+table.ui-list {
+	border-spacing: 0;
+}
+
+table.ui-list td, table.ui-list th {
+	padding: 6px 16px 6px 16px;
+	text-align: left;
+}
+
+table.ui-list th {
+	color: #ffffff;
+	font-size: 1.2em;
+	text-shadow: black 1px 1px 1px;
+}
+
+table.ui-list tr {
+	height: 30px;
+	cursor: pointer;
+	cursor: hand;
+}
+
+table.ui-list td {
+	font-size: 1.2em;	
+}
+
+table.ui-list td.status-success {
+	background-color: #DDFFDD;
+}
+
+table.ui-list td.status-failure {
+	background-color: #FFDDDD;
+}
+
+table.ui-list td a:link, table.ui-list td a:visited, table.ui-list td a:active {
+	color: #3383BB;
+	text-decoration: none;
+}
+
+table.ui-list td a:hover {
+	text-decoration: underline;
+}
+
+table.ui-list tr.over td {
+	background-color: #eeeeee;
+}
+
+table.ui-list td.ui-show, table.ui-list td.ui-edit, table.ui-list td.ui-delete,
+table.ui-list th.ui-show, table.ui-list th.ui-edit, table.ui-list th.ui-delete {
+	width: 90px;
+	padding: 2px 4px 2px 4px;
+	text-align: center;
+}
+
+table.ui-list tr.ui-header {
+	background-color: #0190cc;
+}
+
+.ui-wrapper {
+	padding: 10px;
+	padding-top: 0px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right; 
+}
+
+.cb {
+	clear: both;
+}
+
+.mt {
+	margin-top: 20px;
+}
+
+.mb {
+	margin-bottom: 20px;
+}
+
+.monospace {
+    font-family: monospace;
+}
+
+.ui-round {
+    border-radius : 0.4em;
+    -moz-border-radius : 0.4em;
+    -webkit-border-radius : 0.4em;
+}
+
+.ui-round-s {
+    border-radius : 0.3em;
+    -moz-border-radius : 0.3em;
+    -webkit-border-radius : 0.3em;
+}
+
+.ui-shadow {
+    -moz-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+    -webkit-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+    -khtml-box-shadow: rgba(200,200,200,1) 0 4px 18px;
+    box-shadow: rgba(200,200,200,1) 0 4px 10px; 
+}
+
+.unauthorized {
+	clear: both;
+	margin-left: 20px;
+}

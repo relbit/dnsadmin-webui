@@ -1,0 +1,30 @@
+<%= form_for(@dnsadmin, :html => {:autocomplete => "off"}) do |f| %>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <div class="cb"></div>
+  </div>
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+    <div class="cb"></div>
+  </div>
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.text_field :user %>
+    <div class="cb"></div>
+  </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+    <div class="cb"></div>
+  </div>
+  <div class="field">
+    <%= f.label :use_ssl, "Use SSL" %>
+    <%= f.check_box :use_ssl %>
+    <div class="cb"></div>
+  </div>
+  <div class="actions">
+    <%= f.submit "Update DNS admin", :class => "save-admin" %>
+  </div>
+<% end %>

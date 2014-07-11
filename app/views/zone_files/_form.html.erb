@@ -1,0 +1,156 @@
+<% if admin? and not is_new_zone %>
+	<div id="LastChanges" class="normal-element">Last changes were made by <b><a href="<%= edit_user_path @zonefile.user %>">
+		<%= raw "#{@zonefile.user.username}</a></b> (ID: #{@zonefile.user.id}, type: #{get_user_type @zonefile.user.usertype}) on #{@zonefile.get_created}" %>
+	</div>
+<% end %>
+
+<% css_class = (@zonefile.dirty? or is_new_zone) ? "dirty" : "" %>
+<%= form_for(@zonefile, :html => {:class => "zone-file normal-element #{css_class}", :autocomplete => "off"}) do |f| %>
+  
+  <div class="actions">
+    <%= f.submit "Save zone", :class => "save-zone" if admin? %>
+  </div>
+ 
+ <%= f.hidden_field :id %>
+  <%= f.hidden_field :group_id %>
+ 
+  <div class="field inline f-label">
+    <%= f.label :label, "Label" %>
+    <%= f.text_field :label %>
+    <div class="cb"></div>
+  </div>
+ 
+  <div class="field inline f-origin">
+    <%= f.label :origin, "$ORIGIN" %>
+    <% if is_new_zone %>
+    	<%= f.text_field :origin %>
+    <% else %>
+    	<%= f.text_field :origin, :disabled => "disabled" %>
+   	<% end %>
+    <div class="cb"></div>
+  </div>
+  <div class="field inline f-ttl">
+    <%= f.label :ttl, "$TTL" %>
+    <%= f.text_field :ttl %>
+    <div class="cb"></div>
+  </div>
+    
+  
+  <div class="field inline f-soa">
+    <%= f.label :address, "[Zone]" %>
+    <%= f.text_field :address %>
+
+	<div class="soa-text fl">SOA</div>
+
+    <%= f.label :nameserver, "[NS]" %>
+    <%= f.text_field :nameserver %>
+
+    <%= f.label :email, "[Email]" %>
+    <%= f.text_field :email %>
+    <div class="cb"></div>
+  </div>
+  
+  
+  <div class="field inline f-soa-data first">
+    <%= f.label :serial_number %>
+    <%= f.text_field :serial_number %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field inline f-soa-data">
+    <%= f.label :slave_refresh %>
+    <%= f.text_field :slave_refresh %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field inline f-soa-data">
+    <%= f.label :slave_retry %>
+    <%= f.text_field :slave_retry %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field inline f-soa-data">
+    <%= f.label :slave_expiration %>
+    <%= f.text_field :slave_expiration %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field inline f-soa-data">
+    <%= f.label :max_cache, "Max cache time" %>
+    <%= f.text_field :max_cache %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="cb"></div>
+  
+  
+  <div class="f-settings">
+	<div class="f-settings-row">
+	    <%= f.label :slaves_attr, "Slave addresses (comma delimited):", :class => "slaves" %>
+	    <%= f.text_field :slaves_attr, :id => "SlaveAddresses", :class => "slaves" %>
+	
+	  	<div class="cb"></div>
+	</div>
+	
+	<div class="f-settings-row">
+	    <%= hidden_field_tag "zone_file[dnsa][]" %>
+	    
+	    <label class="dns-admins">Push to following DNS masters:</label>
+	    <ul>
+		  <% @dnsadmins.each do |adm| %>
+		    <li data-adm-id="<%= adm.id %>">
+		    	<%= check_box_tag "zone_file[dnsa][]", adm.id, (@zonefile.dns_admins.exists?(adm.id) or is_new_zone) %>
+		    	<span><%= adm.name %></span>
+		    </li>
+		  <% end %>  
+		</ul>
+	    <div class="cb"></div>
+    </div>
+    
+    <div class="f-settings-row">
+	    <%= f.label :record_admins_attr, "Record admins who may edit this zone's records:", :class => "record-admin" %>
+	    <%= f.text_field :record_admins_attr, :id => "RecordAdmins" %>
+	</div>
+  </div>
+  
+  	
+  <div class="actions">
+    <%= f.submit "Save zone", :class => "save-zone" if admin? %>
+  </div>
+<% end %>
+
+<% if !is_new_zone %>
+	<div class="records-header normal-element">
+		<p class="r-h-name">Name</p>
+		<p class="r-h-ttl">TTL</p>
+		<p class="r-h-rtype">Type</p>
+		<p class="r-h-data">Data</p>
+		<div class="cb"></div>
+	</div>
+	
+	<div class="cb"></div>
+	
+	<ul class="records normal-element">
+	  	<%= render :partial => 'records', :locals => {:is_new => false} %>
+	  	
+	  	<% if can_edit_records? @zonefile %>
+		  	<li class="f-info commit-element">
+		  		<p class="info">Add new records:</p>
+		  		<button id="AddRecord">Add more rows</button>
+		  	</li>
+			<%= render :partial => 'new_record', :locals => {:is_new => true} %>
+		<% end %>
+	</ul>
+	
+	<div id="CommitChangesLoadingBar" class="loading-bar precommit-element"></div>
+	<div id="CommitChanges" class="precommit-element"></div>
+	
+	<div class="cb mt"></div>
+	
+	<% if can_edit_records? @zonefile %>
+		<button class="save-all-records normal-element">Save all records</button>
+	<% end %>
+	<button class="precommit normal-element">Commit changes</button>
+	<button class="abort-commit precommit-element">Abort commit</button>
+	<%= link_to "Commit changes", zone_file_path(@zonefile) + "/commit", :class => "commit precommit-element" %>
+<% end %>

@@ -1,0 +1,36 @@
+<%= form_for(@user, :html => {:autocomplete => "off"}) do |f| %>
+  
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :passwd, "Password" %>
+    <%= f.password_field :passwd %>
+    <div class="errors">
+	    <% @user.errors[:passwd].each do |msg| %>
+	    	<%= msg %><%= (msg == @user.errors[:passwd].last) ? "" : ", " %>
+	    <% end %>
+    </div>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :passwd_confirmation, "Repeat password" %>
+    <%= f.password_field :passwd_confirmation %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="field">
+    <%= f.label :usertype, "User type" %>
+	<% options = (is_new) ? {:prompt => "Select user type"} : {} %>
+	<%= select("user", "usertype", options_for_select(get_user_types, @user.usertype), options) %>
+    <div class="cb"></div>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Update user", :class => "save-user" %>
+  </div>
+<% end %>

@@ -1,0 +1,32 @@
+<h1>Commit history</h1>
+ 
+<% if admin? %>
+	 
+	<div class="ui-wrapper cb"> 
+		<table class="ui-list ui-round ui-shadow">
+		    <tr class="ui-header">
+		    		<th>Zone</th>
+				    <th>Action</th>
+				    <th>Result</th>
+				    <th>Response</th>
+				    <th>Commited on</th>
+				    <th>Commited by</th>
+				    <th></th>
+			    </tr>
+	 
+				<% @commits.each do |commit| %>
+				  <tr>
+				    <td class="monospace"><b><a href="<%= edit_zone_file_path commit.zone_file %>"><%= commit.zone_file.origin %></a></b></td>
+				    <td class="monospace"><%= commit.action %></td>
+				    <td class="monospace status-<%= (commit.result == 1) ? "success" : "failure" %>"><%= (commit.result == 1) ? "Success" : "Failure" %></td>
+				    <td class="monospace"><%= commit.response %></td>
+				    <td class="monospace"><%= commit.get_created %></td>
+				    <td class="monospace"><%= "#{commit.user.username} (ID: #{commit.user.id})" %></td>
+				    <td class="ui-action ui-show"><%= link_to 'show', commit_path(commit) %></td>
+				  </tr>
+				<% end %>
+		</table>
+	</div>
+<% else %>
+	<h2 class="unauthorized">You are not authorized to view this page.</h2>
+<% end %>

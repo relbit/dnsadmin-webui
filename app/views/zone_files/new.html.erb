@@ -1,0 +1,11 @@
+<h1>New zone file</h1>
+ 
+<%= link_to 'Back', zone_files_path, :id => "EditBack" %>
+ 
+<% if defined? notice and !notice.nil? %> 
+<div class="notice <%= (defined? notice_class) ? notice_class : "info" %>"><%= notice %></div>
+<% end %>
+ 
+<div id="EditZone" class="ui-round ui-shadow">
+	<%= render :partial => 'form', :locals => {:is_new_zone => true} %>
+</div>

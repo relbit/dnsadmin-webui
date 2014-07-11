@@ -1,0 +1,11 @@
+<h1>New user</h1>
+ 
+<%= link_to 'Back', users_path, :id => "EditBack" %>
+ 
+<% if defined? notice and !notice.nil? %> 
+<div class="notice <%= (defined? notice_class) ? notice_class : "info" %>"><%= notice %></div>
+<% end %>
+ 
+<div id="EditUser" class="ui-round ui-shadow">
+	<%= render 'form', {:is_new => true} %>
+</div>

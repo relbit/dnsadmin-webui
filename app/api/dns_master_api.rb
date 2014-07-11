@@ -1,0 +1,3 @@
+class DnsMasterApi
+
+end

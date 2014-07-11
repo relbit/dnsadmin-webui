@@ -1,0 +1,32 @@
+<h1>Zone files</h1>
+
+<% if (defined? notice and !notice.nil?) or (defined? alert and !alert.nil?) %> 
+<div class="notice <%= (defined? notice_class) ? notice_class : (defined? alert and !alert.nil?) ? "error" : "info" %>"><% msg = notice || alert %><%= raw msg %></div>
+<% end %>
+
+<%= link_to "Add new", new_zone_file_path, :id => "NewZone" %>
+
+<div class="ui-wrapper cb"> 
+	<table class="ui-list ui-round ui-shadow">
+	    <tr class="ui-header">
+		    <th>Zone</th>
+		    <th>Label</th>
+		    <th class="ui-edit"></th>
+		    <th class="ui-delete"></th>
+	    </tr>
+ 
+		<% @zonefiles.each do |zone| %>
+		    <tr>
+			    <td class="origin"><%= zone.origin %></td>
+			    <td class="zone-label"><% if !zone.label.nil? && !zone.label.empty? %><span><%= zone.label %></span><% end %></td>
+			    <td class="ui-action ui-edit"><%= link_to 'edit', edit_zone_file_path(zone) %></td>
+			    <% if admin? %>
+				    <td class="ui-action ui-delete"><%= link_to 'delete', zone, :confirm => 'Are you sure?',
+				                                     :method => :delete %></td>
+				<% else %>
+					<td>&nbsp;</td>
+				<% end %>
+		    </tr>
+		<% end %>
+	</table>
+</div>

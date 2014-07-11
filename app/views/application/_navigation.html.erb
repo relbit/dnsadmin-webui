@@ -1,0 +1,28 @@
+<div class="menu">
+	<ul>
+		<li><a href="<%= zone_files_path %>" target="_self" >Zones</a>
+			<ul>
+				<li><a href="<%= zone_files_path %>" target="_self">Zones</a></li>
+			</ul>
+		</li>
+		<% if admin? %>
+			<li><a href="<%= dns_admins_path %>" target="_self" >DNS Masters</a>
+				<ul>
+					<li><a href="<%= dns_admins_path %>" target="_self">DNS Masters</a></li>
+				</ul>
+			</li>
+			<li><a href="<%= commits_path %>" target="_self" >Commit history</a>
+				<ul>
+					<li><a href="<%= commits_path %>" target="_self">Commit history</a></li>
+				</ul>
+			</li>
+		<% end %>
+		<% if root? %>
+			<li><a href="<%= users_path %>" target="_self" >Users</a>
+				<ul>
+					<li><a href="<%= users_path %>" target="_self">Users</a></li>
+				</ul>
+			</li>
+		<% end %>
+	</ul>
+</div>

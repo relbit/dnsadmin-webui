@@ -1,0 +1,29 @@
+<h1>DNS masters</h1>
+
+<% if admin? %>
+ 
+	<%= link_to "Add new", new_dns_admin_path, :id => "NewAdmin" %>
+	 
+	<div class="ui-wrapper cb"> 
+		<table class="ui-list ui-round ui-shadow">
+		    <tr class="ui-header">
+				    <th>Name</th>
+				    <th>Address</th>
+				    <th></th>
+				    <th></th>
+			    </tr>
+	 
+				<% @dnsadmins.each do |adm| %>
+				  <tr>
+				    <td class="monospace"><%= adm.name %></td>
+				    <td class="monospace"><%= adm.address %></td>
+				    <td class="ui-action ui-edit"><%= link_to 'edit', edit_dns_admin_path(adm) %></td>
+				    <td class="ui-action ui-delete"><%= link_to 'delete', adm, :confirm => 'Are you sure?',
+				                                     :method => :delete %></td>
+				  </tr>
+				<% end %>
+		</table>
+	</div>
+<% else %>
+	<h2 class="unauthorized">You are not authorized to view this page.</h2>
+<% end %>

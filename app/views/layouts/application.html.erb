@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= (@title + " - ") if !@title.nil? and !@title.empty? %>DNSAdminGui</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="Header">
+		<%= render 'header' %>
+	</div>
+	
+	<div class="cb"></div>
+	
+	<div id="Navigation">
+		<%= render 'navigation' %>
+	</div>
+	
+	<div class="cb"></div>
+	
+	<div id="Content">
+		<%= yield %>
+	</div>
+
+	<div class="cb"></div>
+
+	<div id="Footer">
+		<%= render "footer" %>
+	</div>
+</body>
+</html>

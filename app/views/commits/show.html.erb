@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+	    var zoneId = $('#ZoneId').val();
+	    var commitId = $('#CommitId').val();
+	    
+	    loadCommitChanges(zoneId, url.out('commits/' + commitId + '/diff_data'));
+	});
+</script>
+
+<h1>Commit details: <%= raw "<i>#{@commit.zone_file.origin}</i> from #{@commit.get_created} by #{@commit.user.username} (ID: #{@commit.user.id})" %></h1>
+
+<%= link_to 'Back', commits_path, :id => "EditBack" %>
+ 
+<% if defined? notice and !notice.nil? %> 
+<div class="notice <%= (defined? notice_class) ? notice_class : "info" %>"><%= notice %></div>
+<% end %>
+ 
+<div id="EditCommit" class="ui-round ui-shadow">
+
+	<div id="CommitAction">
+		<h3>Commit action:</h3>
+		<p><%= @commit.action %></p>
+	</div>
+	
+	<div id="CommitResult">
+		<h3>Commit result:</h3>
+		<p><%= @commit.response %></p>
+	</div>
+	
+	<input type="hidden" id="ZoneId" value="<%= @commit.zone_file.id %>" />
+	<input type="hidden" id="CommitId" value="<%= @commit.id %>" />
+	
+	<div id="CommitChangesLoadingBar" class="loading-bar"></div>
+	<div id="CommitChanges"></div>
+</div>

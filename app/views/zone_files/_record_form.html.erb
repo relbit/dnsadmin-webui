@@ -1,0 +1,37 @@
+<% url = zone_file_record_path(@zonefile, record, :format => :js) %>
+
+<%= form_tag url, :method => is_new ? :post : :put, :remote => true, :class => "record-form", :autocomplete => "off" do %>
+
+<div class="field f-r-name">
+	<%= text_field_tag "record[name]", record.name %>
+</div>	
+
+<div class="field f-r-ttl">
+	<%= text_field_tag "record[ttl]", record.ttl %>
+</div>	
+
+<div class="field f-r-rtype">
+	<% options = (is_new) ? {:prompt => "Select record type"} : {} %>
+	<%= select("record", "rtype", options_for_select(["A", "AAAA", "MX", "CNAME", "PTR", "NS", "TXT", "SRV"], record.rtype)) %>
+</div>	
+
+<div class="field f-r-data">
+	<%= text_field_tag "record[data]", record.data %>
+</div>
+
+<% if can_edit_records? @zonefile %>
+	<%= submit_tag "Save", :class => "save-record" %>
+	<%= link_to '', [@zonefile, record], :confirm => 'Are you sure?', :format => :js, :method => :delete, :remote => true, :class => "delete-record" if !is_new %>
+<% end %>
+
+<div class="loading-bar fl"></div>
+
+<% if admin? and not record.user.nil? %>
+	<div class="last-changes"><b><a href="<%= edit_user_path record.user %>">
+		<%= raw "#{record.user.username}</a></b> (ID: #{record.user.id}, type: #{get_user_type record.user.usertype}) on #{record.get_created}" %>
+	</div>
+<% end %>
+
+<div class="cb"></div>
+	
+<% end %>

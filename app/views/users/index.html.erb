@@ -1,0 +1,31 @@
+<h1>Users</h1>
+ 
+<% if root? %>
+ 
+	<%= link_to "Add new", new_user_path, :id => "NewUser" %>
+	 
+	<div class="ui-wrapper cb"> 
+		<table class="ui-list ui-round ui-shadow">
+		    <tr class="ui-header">
+				    <th>ID</th>
+				    <th>Username</th>
+				    <th>User type</th>
+				    <th></th>
+				    <th></th>
+			    </tr>
+	 
+				<% @users.each do |user| %>
+				  <tr>
+				    <td class="monospace"><%= user.id %></td>
+				    <td class="monospace"><%= user.username %></td>
+				    <td class="monospace"><%= get_user_type(user.usertype) %></td>
+				    <td class="ui-action ui-edit"><%= link_to 'edit', edit_user_path(user) %></td>
+				    <td class="ui-action ui-delete"><%= link_to 'delete', user, :confirm => 'Are you sure?',
+				                                     :method => :delete %></td>
+				  </tr>
+				<% end %>
+		</table>
+	</div>
+<% else %>
+	<h2 class="unauthorized">You are not authorized to view this page.</h2>
+<% end %>
